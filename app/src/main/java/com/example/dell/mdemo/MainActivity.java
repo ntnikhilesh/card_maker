@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    //fetch login detail
+    //fetch login detail using rest api
 
 
     public void getdetails(View v) {
