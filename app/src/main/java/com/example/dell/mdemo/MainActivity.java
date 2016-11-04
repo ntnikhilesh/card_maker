@@ -1,5 +1,6 @@
 package com.example.dell.mdemo;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent=new Intent(MainActivity.this,MapsActivity.class);
+        startActivity(intent);
 
         enter_mapatg=(EditText)findViewById(R.id.et_entermaptag);
         address_line1=(EditText)findViewById(R.id.et_ad_line1);

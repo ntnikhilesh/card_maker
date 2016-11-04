@@ -1,8 +1,287 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.mdemo.MapsActivity" />
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dell.mdemo.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/serchMaptag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:scrollbars="vertical">
+
+
+
+            <LinearLayout
+                android:id="@+id/maptag_search_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/et_background">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="@string/search_maptag"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_entermaptag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_enter_mapatg"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <Button
+                    android:id="@+id/but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:onClick="getdetails"
+                    android:gravity="center"
+                    android:layout_marginLeft="80dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@color/et_background"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_maptag_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+
+                >
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/ad_line1"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_ad_line1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/ad_line2"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_ad_line2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/city"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/state"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/zip"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_zip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/phone"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+<!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/lat"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_lat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:text="@string/lon"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/black"
+                    />
+                <EditText
+                    android:id="@+id/et_lon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    />
+
+
+            </LinearLayout>  -->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:orientation="horizontal">
+
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:map="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="com.example.dell.mdemo.MapsActivity" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+
+
+
+
+

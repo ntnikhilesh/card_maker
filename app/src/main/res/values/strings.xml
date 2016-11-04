@@ -20,6 +20,10 @@
     <string name="lat">Latitude : </string>
     <string name="lon">Longitude : </string>
     <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyDIO_jc_WqMomGWLCB6NusidICyPXAPMmg</string>
+
+
+
 
 
 </resources>
