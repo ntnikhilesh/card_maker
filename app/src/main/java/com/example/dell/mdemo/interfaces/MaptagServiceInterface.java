@@ -2,6 +2,7 @@ package com.example.dell.mdemo.interfaces;
 
 //import com.example.hp.movies.apimodel.MovieDb;
 
+import com.example.dell.mdemo.GetMaptagModel;
 import com.example.dell.mdemo.LoginModel;
 
 import retrofit.Callback;
@@ -15,7 +16,7 @@ import retrofit.http.POST;
  */
 public interface MaptagServiceInterface {
     @FormUrlEncoded
-    @POST("/login")
-    void confirmSlot(@Field("email")String  uname,@Field("password")String  password, Callback<LoginModel> responseCallback);
+    @POST("/getMaptag")
+    void confirmSlot(@Field("tagname")String  tagname,Callback<GetMaptagModel> responseCallback);
 
 }

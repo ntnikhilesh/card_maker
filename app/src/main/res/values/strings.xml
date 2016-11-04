@@ -5,4 +5,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <!-- Search maptag -->
+
+    <string name="search_maptag">Search MapTag:</string>
+    <string name="hint_enter_mapatg">Enter a Maptag like \'thefuture\'</string>
+    <string name="ad_line1">Address Line 1 : </string>
+    <string name="ad_line2">Address Line 2 : </string>
+    <string name="city">City : </string>
+    <string name="state">State : </string>
+    <string name="zip">Zip : </string>
+    <string name="phone">Phone : </string>
+    <string name="lat">Latitude : </string>
+    <string name="lon">Longitude : </string>
+    <string name="title_activity_maps">Map</string>
+
+
 </resources>

@@ -1,5 +1,6 @@
 package com.example.dell.mdemo;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,9 +15,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.dell.mdemo.generator.NetworkApiGenerator;
 import com.example.dell.mdemo.interfaces.MaptagServiceInterface;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -24,6 +31,8 @@ import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
+    ImageView maptag_image;
 
     private MaptagServiceInterface mv;
 
@@ -33,6 +42,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        enter_mapatg=(EditText)findViewById(R.id.et_entermaptag);
+        address_line1=(EditText)findViewById(R.id.et_ad_line1);
+        address_line2=(EditText)findViewById(R.id.et_ad_line2);
+        city=(EditText)findViewById(R.id.et_city);
+        state=(EditText)findViewById(R.id.et_state);
+        zip=(EditText)findViewById(R.id.et_zip);
+        phone=(EditText)findViewById(R.id.et_phone);
+        lat=(EditText)findViewById(R.id.et_lat);
+        lon=(EditText)findViewById(R.id.et_lon);
+
+        maptag_image=(ImageView)findViewById(R.id.iv_maptag_image);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -112,11 +133,20 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    //fetch login detail using rest api
+    //fetch maptag detail using getMaptag API
 
 
     public void getdetails(View v) {
+
+        if(enter_mapatg.getText().length()>0)
+        {
         send();
+        }
+        else
+        {
+            Toast.makeText(this,"Please enter your Maptag",Toast.LENGTH_LONG).show();
+        }
+
     }
 
 
@@ -125,16 +155,39 @@ public class MainActivity extends AppCompatActivity
     {                mv = NetworkApiGenerator.createService(MaptagServiceInterface.class);
 
         try {
-
-            mv.confirmSlot("1ntnikhilesh@gmail.com", "12345", new Callback<LoginModel>() {
+            String m_tag=enter_mapatg.getText().toString();
+            mv.confirmSlot(m_tag, new Callback<GetMaptagModel>() {
                 @Override
-                public void success(LoginModel loginModel, Response response) {
+                public void success(GetMaptagModel getMaptagModel, Response response) {
 
                     Log.d("nikhil response", response.getUrl());
-                    Log.d("nikhil loginmodel data", loginModel.toString());
+                    Log.d("nikhil loginmodel data", getMaptagModel.toString());
 
-                    Button b=(Button)findViewById(R.id.but);
-                    b.setText(loginModel.getFname().toString());
+                    //Button b=(Button)findViewById(R.id.but);
+                   // b.setText(getMaptagModel.getName().toString());
+
+                    address_line1.setText(getMaptagModel.getAddress_line_1().toString());
+                    address_line2.setText(getMaptagModel.getAddress_line_2().toString());
+                    city.setText(getMaptagModel.getCity().toString());
+                    state.setText(getMaptagModel.getState().toString());
+                    zip.setText(getMaptagModel.getZip().toString());
+                    phone.setText(getMaptagModel.getPhone().toString());
+                    lat.setText(getMaptagModel.getLat().toString());
+                    lon.setText(getMaptagModel.getLng().toString());
+
+                    List<String> img=getMaptagModel.getImages();
+                   Log.d("nikhil image",getMaptagModel.getImages()+"");
+                    //maptag_image.setImageURI(Uri.parse(img.toString()));
+
+                    if(img.size()>0) {
+
+                        Picasso.with(MainActivity.this).load(img.get(0)).into(maptag_image);
+                    }
+                    else
+                    {
+                        maptag_image.setImageResource(R.drawable.maptag_logo);
+                    }
+
 
                 }
 
