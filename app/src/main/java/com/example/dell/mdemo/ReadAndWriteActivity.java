@@ -26,9 +26,9 @@ public class ReadAndWriteActivity extends AppCompatActivity {
 
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        DatabaseReference myRef = database.getReference("message1");
 
-        myRef.setValue("Hello, World1!");
+        myRef.setValue("OM!");
 
 
 
