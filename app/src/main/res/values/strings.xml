@@ -38,12 +38,9 @@
     </string>
 
 
-
     <!-- Signup -->
 
     <string name="auth_failed">Signup Auth failed</string>
-
-
 
 
 </resources>
