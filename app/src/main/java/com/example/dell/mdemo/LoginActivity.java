@@ -14,7 +14,6 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -73,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+  //  private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView_login;
@@ -90,6 +89,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView_login = (EditText) findViewById(R.id.et_password_on_signin);
+
+
 
         //firebase
         mAuth = FirebaseAuth.getInstance();
@@ -161,6 +162,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
 
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -194,7 +197,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w("nlogin4", "signInWithEmail:failed", task.getException());
-                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
+                            Toast.makeText(LoginActivity.this, "Invalid Email or Password",
                                     Toast.LENGTH_SHORT).show();
                             Intent i11=new Intent(LoginActivity.this,LoginActivity.class);
                             startActivity(i11);
@@ -261,10 +264,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void verify_inputs() {
-        if (mAuthTask != null)
+       /* if (mAuthTask != null)
         {
             return;
-        }
+        } */
 
         // Reset errors.
         mEmailView_login.setError(null);
@@ -307,7 +310,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+            //showProgress(true);
             attemptLogin1();
 
             //mAuthTask = new UserLoginTask(email, password);
@@ -419,7 +422,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+   /* public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -470,6 +473,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
-    }
+    }  */
 }
 

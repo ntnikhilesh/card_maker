@@ -20,13 +20,36 @@
         android:text="Welcome to Maptags....."
         android:gravity="center"/>
 
+        <ImageView
+            android:id="@+id/iv_user_imape"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/tv_user_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <Button
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SIGN OUT"
             android:gravity="center"
             android:onClick="mlogout"
             />
+
+        <Button
+            android:id="@+id/botton_goto_update_page"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="UPDATE PASSWORD"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

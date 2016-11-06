@@ -56,7 +56,8 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".Profile_Activity"></activity>
+        <activity android:name=".Profile_Activity" />
+        <activity android:name=".Update_Password_Activity"></activity>
     </application>
 
 </manifest>

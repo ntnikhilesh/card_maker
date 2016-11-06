@@ -1,6 +1,7 @@
 package com.example.dell.mdemo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignupActivity extends AppCompatActivity {
 
+    String sigup_email;
+    String signup_pass;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -63,9 +67,15 @@ public class SignupActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    update_profile();
+                    update_email();
+                    send_mail();
+
                     Log.d("nikhil id if signup", "onAuthStateChanged:signed_in:" + user.getUid());
-                    Intent i3=new Intent(SignupActivity.this,Profile_Activity.class);
+                    FirebaseAuth.getInstance().signOut();
+                    Intent i3=new Intent(SignupActivity.this,LoginActivity.class);
                     startActivity(i3);
+                    Toast.makeText(SignupActivity.this,"Signup successfuly....Login please",Toast.LENGTH_LONG).show();
 
                 } else {
                     // User is signed out
@@ -81,6 +91,66 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
+    //send verification mail
+
+    public void send_mail()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("nikhil_email", "Email sent.");
+                        }
+                    }
+                });
+
+    }
+
+    //Update email
+
+    public void update_email()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.updateEmail(sigup_email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("nikhil_email", "User email address updated.");
+                        }
+                    }
+                });
+    }
+
+
+    // Update profile
+
+    public void update_profile()
+    {
+        Log.d("nikhil update profile", "done");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName("Nikhilesh")
+                .setPhotoUri(Uri.parse("http://i.imgur.com/i4f9f9I.jpg"))
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("nupdate_profile", "User profile updated.");
+                        }
+                    }
+                });
+    }
+
+
     public void go_to_signin(View view)
     {
         Intent i5=new Intent(SignupActivity.this,LoginActivity.class);
@@ -91,8 +161,8 @@ public class SignupActivity extends AppCompatActivity {
     public void msignup()
     {
 
-        String sigup_email=mEmailView_signup.getText().toString();
-        String signup_pass=mPasswordView_signup.getText().toString();
+       sigup_email=mEmailView_signup.getText().toString();
+       signup_pass=mPasswordView_signup.getText().toString();
         Log.d("nsignup data",sigup_email+""+signup_pass);
 
         mAuth.createUserWithEmailAndPassword(sigup_email,signup_pass)

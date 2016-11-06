@@ -88,6 +88,8 @@
                 android:text="SIGN UP"
                 android:textStyle="bold" />
 
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
