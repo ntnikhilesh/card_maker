@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent=new Intent(MainActivity.this,MapsActivity.class);
+        Intent intent=new Intent(MainActivity.this,ReadAndWriteActivity.class);
         startActivity(intent);
 
         enter_mapatg=(EditText)findViewById(R.id.et_entermaptag);

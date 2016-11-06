@@ -42,7 +42,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".ReadAndWriteActivity"
+            android:label="@string/title_activity_read_and_write"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
