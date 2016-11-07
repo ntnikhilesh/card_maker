@@ -30,6 +30,9 @@ public class ReadAndWriteActivity extends AppCompatActivity {
 
         myRef.setValue("OM!");
 
+       // myRef.child("user1").child("user2").setValue(true);
+
+
 
 
 

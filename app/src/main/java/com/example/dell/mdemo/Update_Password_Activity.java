@@ -17,20 +17,22 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Update_Password_Activity extends AppCompatActivity {
 
-    private String new_password;
-    private EditText update_pass;
+    public String new_password;
+    public EditText update_pass;
+    public Button button_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update__password_);
 
-        update_pass=(EditText)findViewById(R.id.et_new_pass);
-        new_password=update_pass.getText().toString();
-        Button button_update=(Button)findViewById(R.id.botton_update_pass);
+        update_pass=(EditText)findViewById(R.id.et_new_pass1);
+
+        button_update=(Button)findViewById(R.id.botton_update_pass);
         button_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                new_password=update_pass.getText().toString().trim();
                 Log.d("new password1",new_password+"1");
                 update_password();
             }

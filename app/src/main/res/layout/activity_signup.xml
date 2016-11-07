@@ -62,12 +62,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SIGN-UP PAGE"
+                android:textSize="25sp"
                 android:gravity="center"
                 android:textColor="@color/text_color"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/et_email_on_signup"
