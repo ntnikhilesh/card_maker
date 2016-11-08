@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent=new Intent(MainActivity.this,Firebase_Storage_Activity.class);
+        Intent intent=new Intent(MainActivity.this,Firebase_download_img.class);
         startActivity(intent);
 
         enter_mapatg=(EditText)findViewById(R.id.et_entermaptag);
