@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
 
     private MaptagServiceInterface mv;
 
+//Login page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
