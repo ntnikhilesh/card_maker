@@ -67,7 +67,9 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Firebase_download_img"></activity>
+        <activity android:name=".Firebase_download_img" />
+        <activity android:name=".WeddingDetailActivity" />
+        <activity android:name=".SelectDesignActivity"></activity>
     </application>
 
 </manifest>
