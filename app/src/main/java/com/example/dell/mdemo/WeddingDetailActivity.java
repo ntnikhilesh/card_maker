@@ -6,19 +6,68 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
+import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class WeddingDetailActivity extends AppCompatActivity {
 
     EditText your_name;
     String myour_name;
-    Button nextb;
+    Button nextb,datetimeb;
+
+    //date and time picker
+
+    private SimpleDateFormat mFormatter = new SimpleDateFormat("MMMM dd yyyy hh:mm aa");
+    private Button mButton;
+
+    private SlideDateTimeListener listener = new SlideDateTimeListener() {
+
+        @Override
+        public void onDateTimeSet(Date date)
+        {
+            Toast.makeText(WeddingDetailActivity.this,
+                    mFormatter.format(date), Toast.LENGTH_SHORT).show();
+        }
+
+        // Optional cancel listener
+        @Override
+        public void onDateTimeCancel()
+        {
+            Toast.makeText(WeddingDetailActivity.this,
+                    "Canceled", Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wedding_detail);
 
         your_name=(EditText)findViewById(R.id.et_your_name);
+        datetimeb=(Button)findViewById(R.id.button_set_datetime);
+        datetimeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SlideDateTimePicker.Builder(getSupportFragmentManager())
+                        .setListener(listener)
+                        .setInitialDate(new Date())
+                        //.setMinDate(minDate)
+                        //.setMaxDate(maxDate)
+                        //.setIs24HourTime(true)
+                        //.setTheme(SlideDateTimePicker.HOLO_DARK)
+                        //.setIndicatorColor(Color.parseColor("#990000"))
+                        .build()
+                        .show();
+            }
+        });
         nextb=(Button)findViewById(R.id.button_next);
         nextb.setOnClickListener(new View.OnClickListener() {
             @Override

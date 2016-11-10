@@ -41,6 +41,6 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:9.8.0'
     compile 'com.google.firebase:firebase-storage:9.8.0'
     compile 'com.android.support:support-v4:25.0.0'
-    
+    compile project(':slideDateTimePicker')
 }
 apply plugin: 'com.google.gms.google-services'

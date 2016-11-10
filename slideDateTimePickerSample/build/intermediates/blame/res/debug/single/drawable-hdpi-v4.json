@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\DELL\\AndroidStudioProjects\\MDemo\\slideDateTimePickerSample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\selection_divider.9.png",
+        "source": "C:\\Users\\DELL\\AndroidStudioProjects\\MDemo\\slideDateTimePickerSample\\build\\intermediates\\exploded-aar\\MDemo\\slideDateTimePicker\\unspecified\\res\\drawable-hdpi-v4\\selection_divider.9.png"
+    },
+    {
+        "merged": "C:\\Users\\DELL\\AndroidStudioProjects\\MDemo\\slideDateTimePickerSample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\DELL\\AndroidStudioProjects\\MDemo\\slideDateTimePickerSample\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    }
+]
