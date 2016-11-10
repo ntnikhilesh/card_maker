@@ -60,21 +60,28 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@drawable/access_time_icon"
+                android:background="@color/text_color"/>
 
-           <Button
-               android:id="@+id/button_set_datetime"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Date and Time"
-               android:textColor="@color/et_background"
-               android:textSize="15sp"
-               android:background="@color/text_color"/>
+            <Button
+                android:id="@+id/button_set_datetime"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Select Date and Time"
+                android:textColor="@color/et_background"
+                android:textSize="15sp"
+                android:background="@color/text_color"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_date_time"
