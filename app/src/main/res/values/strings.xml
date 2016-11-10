@@ -46,4 +46,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <!--wedding detail  -->
+
+    <string name="wedding_msg">God has led two lives to take one path. The honour of your presence is requested at the marriage </string>
+
 </resources>

@@ -16,7 +16,12 @@ public class SelectDesignActivity extends AppCompatActivity {
 
     wc_detail=(TextView)findViewById(R.id.tv_wedding_deteal);
         String nyour_name= getIntent().getStringExtra("your name");
-        wc_detail.setText(nyour_name);
+        String nparter_name= getIntent().getStringExtra("partner name");
+        String ndate_time= getIntent().getStringExtra("dt");
+        String nwedding_msg= getIntent().getStringExtra("msg");
+        String nlocation= getIntent().getStringExtra("location");
+
+        wc_detail.setText("Wedding Invitation \n Together with their families"+nyour_name+"\n weds \n"+nparter_name+"\n"+nwedding_msg+"\n"+ndate_time+"\nLocation \n"+nlocation);
 
     }
 }

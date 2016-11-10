@@ -8,12 +8,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.dell.mdemo.SelectDesignActivity"
-    android:background="@drawable/wc_image">
+    android:background="@drawable/wc_image3">
 
-    <TextView
+   <TextView
         android:id="@+id/tv_wedding_deteal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"/>
 
 </RelativeLayout>

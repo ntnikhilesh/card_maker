@@ -17,7 +17,8 @@
         android:id="@+id/wedding_detail_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
     <TextView
         android:layout_width="match_parent"
@@ -68,7 +69,37 @@
                android:id="@+id/button_set_datetime"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="Date and Time"/>
+               android:text="Date and Time"
+               android:textColor="@color/et_background"
+               android:textSize="15sp"
+               android:background="@color/text_color"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/et_wedding_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wedding_msg"
+                android:hint="Wedding Message"
+
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                 />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -78,21 +109,24 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/et_email_on_signin"
+                android:id="@+id/et_location"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:hint="Wedding Message"
+                android:layout_height="wrap_content"
+                android:hint="Location"
                 android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
+                />
 
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/button_next"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:text="Next"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/et_background"
+            android:textSize="15sp"
+            android:background="@color/text_color"
             />
 
     </LinearLayout>
