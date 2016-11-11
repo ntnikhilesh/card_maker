@@ -1,14 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.dell.mdemo.LoginActivity">
+    tools:context="com.example.dell.mdemo.fregment.LoginFragment">
 
     <!-- Login progress -->
     <ProgressBar
@@ -44,7 +38,7 @@
                 android:layout_marginTop="50dp">
 
                 <AutoCompleteTextView
-                    android:id="@+id/et_email_on_signin"
+                    android:id="@+id/et_email_on_login_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -59,7 +53,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_password_on_signin"
+                    android:id="@+id/et_password_on_login_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
@@ -96,7 +90,7 @@
 
 
             <Button
-                android:id="@+id/botton_make_card_on_login"
+                android:id="@+id/botton_make_card_on_login_fragment"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,4 +105,6 @@
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+
+</FrameLayout>

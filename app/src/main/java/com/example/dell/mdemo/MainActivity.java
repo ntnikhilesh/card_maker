@@ -1,11 +1,10 @@
 package com.example.dell.mdemo;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,37 +14,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.dell.mdemo.generator.NetworkApiGenerator;
-import com.example.dell.mdemo.interfaces.MaptagServiceInterface;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import com.example.dell.mdemo.fregment.LoginFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
-    ImageView maptag_image;
+        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener {
+   // EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
+    //ImageView maptag_image;
 
-    private MaptagServiceInterface mv;
+   // private MaptagServiceInterface mv;
 
 //Login page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+     setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       setSupportActionBar(toolbar);
 
-        Intent intent=new Intent(MainActivity.this,WeddingDetailActivity.class);
+        // call fragment
+
+        android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        LoginFragment fragment = new LoginFragment();
+        fragmentTransaction.add(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack("f1");
+        fragmentTransaction.commit();
+
+      /* Intent intent=new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
 
         enter_mapatg=(EditText)findViewById(R.id.et_entermaptag);
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         lat=(EditText)findViewById(R.id.et_lat);
         lon=(EditText)findViewById(R.id.et_lon);
 
-        maptag_image=(ImageView)findViewById(R.id.iv_maptag_image);
+        maptag_image=(ImageView)findViewById(R.id.iv_maptag_image);   */
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -137,7 +133,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
+    }
+
+/*
     //fetch maptag detail using getMaptag API
 
 
@@ -206,6 +207,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
+*/
 }
 

@@ -130,6 +130,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+
+        //sign in
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -144,11 +146,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+
+        //sign up
         Button mgo_to_signup_page=(Button)findViewById(R.id.botton_go_to_signup_page);
         mgo_to_signup_page.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i1=new Intent(LoginActivity.this,SignupActivity.class);
+                startActivity(i1);
+            }
+        });
+
+        //make card
+
+        Button mmake_card=(Button)findViewById(R.id.botton_make_card_on_login);
+        mmake_card.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(LoginActivity.this,WeddingDetailActivity.class);
                 startActivity(i1);
             }
         });
