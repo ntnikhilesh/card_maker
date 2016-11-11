@@ -16,6 +16,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dell.mdemo.Profile_Activity;
@@ -88,13 +90,30 @@ public class LoginFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
-    }
+
+
+
+
+
+            }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-/*
+
+
+
+        // Inflate the layout for this fragment
+        //some code
+        FrameLayout fl = (FrameLayout) inflater.inflate(R.layout.fragment_login, container, false);
+        //some code
+
+        /*
         // Set up the login form.
 //        mEmailView_login = (AutoCompleteTextView)getView().findViewById(R.id.et_email_on_login_fragment);
         populateAutoComplete();
@@ -173,11 +192,11 @@ public class LoginFragment extends Fragment {
                 //Intent i1=new Intent(LoginActivity.this,SignupActivity.class);
                 //startActivity(i1);
             }
-        });
+        });  */
 
         //make card
 
-        Button mmake_card=(Button)getView().findViewById(R.id.botton_make_card_on_login_fragment);
+        Button mmake_card=(Button)fl.findViewById(R.id.botton_make_card_on_login_fragment);
         mmake_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,14 +207,11 @@ public class LoginFragment extends Fragment {
                 fragmentTransaction.add(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack("f2");
                 fragmentTransaction.commit();
-              //  Intent i1=new Intent(LoginActivity.this,WeddingDetailActivity.class);
-              //  startActivity(i1);
+                //  Intent i1=new Intent(LoginActivity.this,WeddingDetailActivity.class);
+                //  startActivity(i1);
             }
         });
-*/
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return fl;
 
 
     } // end onCreateView
