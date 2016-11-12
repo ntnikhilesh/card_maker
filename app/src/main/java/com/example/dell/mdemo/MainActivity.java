@@ -16,10 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.dell.mdemo.fregment.LoginFragment;
+import com.example.dell.mdemo.fregment.SelectDesignFragment;
 import com.example.dell.mdemo.fregment.WeddingDetailFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener{
    // EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
     //ImageView maptag_image;
 

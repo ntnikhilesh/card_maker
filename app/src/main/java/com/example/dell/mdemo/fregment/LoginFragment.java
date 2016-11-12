@@ -204,7 +204,7 @@ public class LoginFragment extends Fragment {
                 android.support.v4.app.FragmentManager fragmentManager=getFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 WeddingDetailFragment fragment = new WeddingDetailFragment();
-                fragmentTransaction.add(R.id.fragment_container, fragment);
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack("f2");
                 fragmentTransaction.commit();
                 //  Intent i1=new Intent(LoginActivity.this,WeddingDetailActivity.class);
