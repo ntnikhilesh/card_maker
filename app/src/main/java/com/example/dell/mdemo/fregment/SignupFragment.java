@@ -1,7 +1,6 @@
 package com.example.dell.mdemo.fregment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,8 +16,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.example.dell.mdemo.LoginActivity;
-import com.example.dell.mdemo.MainActivity;
 import com.example.dell.mdemo.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

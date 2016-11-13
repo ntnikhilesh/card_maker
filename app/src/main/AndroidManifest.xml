@@ -52,12 +52,6 @@
             android:name=".ReadAndWriteActivity"
             android:label="@string/title_activity_read_and_write"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".Profile_Activity" />
-        <activity android:name=".Update_Password_Activity" />
         <activity android:name=".Firebase_Storage_Activity" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -68,8 +62,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".Firebase_download_img" />
-        <activity android:name=".WeddingDetailActivity" />
-        <activity android:name=".SelectDesignActivity"></activity>
     </application>
 
 </manifest>

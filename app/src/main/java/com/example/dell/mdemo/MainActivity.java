@@ -14,17 +14,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.dell.mdemo.fregment.LoginFragment;
 import com.example.dell.mdemo.fregment.SelectDesignFragment;
 import com.example.dell.mdemo.fregment.SignupFragment;
+import com.example.dell.mdemo.fregment.UpdatePasswordFragment;
 import com.example.dell.mdemo.fregment.WeddingDetailFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener,SignupFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener,SignupFragment.OnFragmentInteractionListener,UpdatePasswordFragment.OnFragmentInteractionListener{
    // EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
     //ImageView maptag_image;
 
@@ -40,6 +42,22 @@ public class MainActivity extends AppCompatActivity
      setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
+
+
+        RelativeLayout rl=(RelativeLayout)findViewById(R.id.relative_layout_id);
+        rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                LoginFragment fragment = new LoginFragment();
+                fragmentTransaction.add(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack("f7");
+                fragmentTransaction.commit();
+
+            }
+        });
 
         // call fragment
 
@@ -166,6 +184,30 @@ public class MainActivity extends AppCompatActivity
                 LoginFragment fragment = new LoginFragment();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack("f6");
+                fragmentTransaction.commit();
+
+
+                return true;
+
+            }
+            else {
+                Toast.makeText(MainActivity.this, "You are not signin...",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+        if (id == R.id.action_update_password) {
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+
+                android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                UpdatePasswordFragment fragment = new UpdatePasswordFragment();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack("f8");
                 fragmentTransaction.commit();
 
 

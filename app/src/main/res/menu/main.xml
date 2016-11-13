@@ -20,6 +20,12 @@
         android:orderInCategory="100"
         android:title="Login"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_update_password"
+        android:orderInCategory="100"
+        android:title="Update Passowrd"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
