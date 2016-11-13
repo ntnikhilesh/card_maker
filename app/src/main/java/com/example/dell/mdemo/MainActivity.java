@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+               /* android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 LoginFragment fragment = new LoginFragment();
                 fragmentTransaction.add(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack("f7");
-                fragmentTransaction.commit();
+                fragmentTransaction.commit(); */
 
             }
         });
@@ -109,8 +109,24 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+
+
+           // finish();
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+
+        android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        LoginFragment fragment = new LoginFragment();
+        fragmentTransaction.add(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack("f9");
+        fragmentTransaction.commit();
+
+        super.onResume();
     }
 
     @Override

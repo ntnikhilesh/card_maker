@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,8 +126,8 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Create a new account by passing the new user's email address and password to createUserWithEmailAndPassword:
-
-                msignup();
+                verify_inputs();
+                //msignup();
 
             }
         });
@@ -175,6 +176,77 @@ return fl;
 
 
     } // end on createView
+
+
+    private void verify_inputs() {
+       /* if (mAuthTask != null)
+        {
+            return;
+        } */
+
+        // Reset errors.
+        mEmailView_signup.setError(null);
+        mPasswordView_signup.setError(null);
+
+        // Store values at the time of the login attempt.
+        sigup_email=mEmailView_signup.getText().toString();
+        signup_pass=mPasswordView_signup.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        // Check for a valid password, if the user entered one.
+        if (!TextUtils.isEmpty(signup_pass) && !isPasswordValid(signup_pass))
+        {
+            mPasswordView_signup.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView_signup;
+            cancel = true;
+        }
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(sigup_email))
+        {
+            mEmailView_signup.setError(getString(R.string.error_field_required));
+            focusView = mEmailView_signup;
+            cancel = true;
+        } else if (!isEmailValid(sigup_email))
+        {
+            mEmailView_signup.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView_signup;
+            cancel = true;
+        }
+
+        if (cancel)
+        {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else
+        {
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+            //showProgress(true);
+            msignup();
+
+            //mAuthTask = new UserLoginTask(email, password);
+            // mAuthTask.execute((Void) null);
+        }
+    }//end verify inputs
+
+
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
+    }
+
+
+    private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 6;
+    }
+
+
+
 
 // Go to login page
 
@@ -258,8 +330,7 @@ return fl;
     public void msignup()
     {
 
-        sigup_email=mEmailView_signup.getText().toString();
-        signup_pass=mPasswordView_signup.getText().toString();
+
         Log.d("nsignup data",sigup_email+""+signup_pass);
 
         mAuth.createUserWithEmailAndPassword(sigup_email,signup_pass)

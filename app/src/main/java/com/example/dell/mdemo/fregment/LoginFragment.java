@@ -48,6 +48,8 @@ public class LoginFragment extends Fragment {
     String email;
     String password;
 
+    private Boolean exit = false;
+
 
 
 
@@ -93,6 +95,10 @@ public class LoginFragment extends Fragment {
 
 
         }
+
+
+
+
 
 //It will run once login successfull
         //firebase
@@ -235,6 +241,10 @@ public class LoginFragment extends Fragment {
 
     } // end onCreateView
 
+
+
+
+    //close app
 
     public void attemptLogin1()
     {

@@ -3,21 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dell.mdemo.fregment.SelectDesignFragment"
-    android:background="@drawable/wc_image3"
-    >
 
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-       android:scrollbars="vertical">
+        android:background="@drawable/wc_image3"
+      >
 
         <TextView
             android:id="@+id/tv_w1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:text="Wedding Invitation"
             android:gravity="center"
             android:textSize="20sp"
@@ -79,6 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:text="Seeta"
             android:gravity="center"
             android:textSize="15sp"
@@ -114,13 +120,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:text="Seeta"
             android:gravity="center"
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
+            android:layout_marginBottom="60dp"
             />
     </LinearLayout>
-
+</ScrollView>
 
 </FrameLayout>
