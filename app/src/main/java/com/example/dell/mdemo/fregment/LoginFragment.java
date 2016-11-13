@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,11 +20,15 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dell.mdemo.Profile_Activity;
 import com.example.dell.mdemo.R;
 import com.example.dell.mdemo.SignupActivity;
 import com.example.dell.mdemo.WeddingDetailActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -94,11 +99,45 @@ public class LoginFragment extends Fragment {
 
         }
 
+//It will run once login successfull
+        //firebase
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d("nlogin1", "onAuthStateChanged:signed_in:" + user.getUid());
 
+                    Toast.makeText(getActivity(),"Login Successful....",
+                            Toast.LENGTH_SHORT).show();
+                    android.support.v4.app.FragmentManager fragmentManager=getFragmentManager();
+                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                    WeddingDetailFragment fragment = new WeddingDetailFragment();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack("f2");
+                    fragmentTransaction.commit();
 
+                    //Intent i4=new Intent(LoginActivity.this,Profile_Activity.class);
+                    //startActivity(i4);
 
+                } else {
 
+                    // Toast.makeText(LoginActivity.this,"Invalid user....",Toast.LENGTH_LONG).show();
+                    // User is signed out
+                    Log.d("nlogin2", "onAuthStateChanged:signed_out");
+                }
+                // ...
             }
+        };
+
+
+
+
+
+
+    }
 
 
 
@@ -113,13 +152,11 @@ public class LoginFragment extends Fragment {
         FrameLayout fl = (FrameLayout) inflater.inflate(R.layout.fragment_login, container, false);
         //some code
 
-        /*
+
         // Set up the login form.
-//        mEmailView_login = (AutoCompleteTextView)getView().findViewById(R.id.et_email_on_login_fragment);
+     mEmailView_login = (AutoCompleteTextView)fl.findViewById(R.id.et_email_on_login_fragment);
         populateAutoComplete();
-
-      //  mPasswordView_login = (EditText) getView().findViewById(R.id.et_password_on_login_fragment);
-
+        mPasswordView_login = (EditText)fl.findViewById(R.id.et_password_on_login_fragment);
 
 
 
@@ -127,29 +164,7 @@ public class LoginFragment extends Fragment {
 
 
 
-        //firebase
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d("nlogin1", "onAuthStateChanged:signed_in:" + user.getUid());
 
-
-                    //Intent i4=new Intent(LoginActivity.this,Profile_Activity.class);
-                    //startActivity(i4);
-
-                } else {
-
-                    // Toast.makeText(LoginActivity.this,"Invalid user....",Toast.LENGTH_LONG).show();
-                    // User is signed out
-                    Log.d("nlogin2", "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
 
 
 
@@ -169,7 +184,7 @@ public class LoginFragment extends Fragment {
 
 
         //sign in
-        Button mEmailSignInButton = (Button) getView().findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button)fl.findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,7 +192,7 @@ public class LoginFragment extends Fragment {
 
 
 
-                //verify_inputs();
+                verify_inputs();
 
                 // attemptLogin();
             }
@@ -185,14 +200,23 @@ public class LoginFragment extends Fragment {
 
 
         //sign up
-        Button mgo_to_signup_page=(Button)getView().findViewById(R.id.botton_go_to_signup_page);
+        Button mgo_to_signup_page=(Button)fl.findViewById(R.id.botton_go_to_signup_page);
         mgo_to_signup_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+                android.support.v4.app.FragmentManager fragmentManager=getFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                SignupFragment fragment = new SignupFragment();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack("f2");
+                fragmentTransaction.commit();
                 //Intent i1=new Intent(LoginActivity.this,SignupActivity.class);
                 //startActivity(i1);
             }
-        });  */
+        });
 
         //make card
 
@@ -217,10 +241,119 @@ public class LoginFragment extends Fragment {
     } // end onCreateView
 
 
+    public void attemptLogin1()
+    {
+
+        //String login_email= mEmailView_login.getText().toString();
+        //String login_pass= mPasswordView_login.getText().toString();
+        Log.d("nlogin10", "input data" + email+""+password);
+
+        mAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d("nlogin3", "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w("nlogin4", "signInWithEmail:failed", task.getException());
+                            Toast.makeText(getActivity(), "Invalid Email or Password",
+                                    Toast.LENGTH_SHORT).show();
+
+                            android.support.v4.app.FragmentManager fragmentManager=getFragmentManager();
+                            FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                            LoginFragment fragment = new LoginFragment();
+                            fragmentTransaction.replace(R.id.fragment_container, fragment);
+                            fragmentTransaction.addToBackStack("f5");
+                            fragmentTransaction.commit();
+                           // Intent i11=new Intent(LoginActivity.this,LoginActivity.class);
+                           // startActivity(i11);
+                        }
+
+                        // ...
+                    }
+                });
+
+    }
+
+
+
+    private void verify_inputs() {
+       /* if (mAuthTask != null)
+        {
+            return;
+        } */
+
+        // Reset errors.
+        mEmailView_login.setError(null);
+        mPasswordView_login.setError(null);
+
+        // Store values at the time of the login attempt.
+        email = mEmailView_login.getText().toString();
+        password = mPasswordView_login.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        // Check for a valid password, if the user entered one.
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password))
+        {
+            mPasswordView_login.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView_login;
+            cancel = true;
+        }
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(email))
+        {
+            mEmailView_login.setError(getString(R.string.error_field_required));
+            focusView = mEmailView_login;
+            cancel = true;
+        } else if (!isEmailValid(email))
+        {
+            mEmailView_login.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView_login;
+            cancel = true;
+        }
+
+        if (cancel)
+        {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else
+        {
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+            //showProgress(true);
+            attemptLogin1();
+
+            //mAuthTask = new UserLoginTask(email, password);
+            // mAuthTask.execute((Void) null);
+        }
+    }//end verify inputs
+
+
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
+    }
+
+
+    private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 6;
+    }
+
+
 
     private void populateAutoComplete() {
 
     }
+
+
 
 
 
@@ -263,4 +396,22 @@ public class LoginFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
 }

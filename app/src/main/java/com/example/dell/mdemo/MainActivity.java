@@ -14,19 +14,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.dell.mdemo.fregment.LoginFragment;
 import com.example.dell.mdemo.fregment.SelectDesignFragment;
+import com.example.dell.mdemo.fregment.SignupFragment;
 import com.example.dell.mdemo.fregment.WeddingDetailFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener,SignupFragment.OnFragmentInteractionListener{
    // EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
     //ImageView maptag_image;
 
    // private MaptagServiceInterface mv;
 
 //Login page
+
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,9 +110,79 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        if (id == R.id.action_home) {
+
+
+            Toast.makeText(MainActivity.this, "Comming Soon...",
+                    Toast.LENGTH_SHORT).show();
         }
+
+        if (id == R.id.action_profile) {
+
+
+            Toast.makeText(MainActivity.this, "Comming Soon...",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        if (id == R.id.action_login) {
+
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+
+
+                Toast.makeText(MainActivity.this, "Login as "+user.getDisplayName(),
+                        Toast.LENGTH_SHORT).show();
+
+
+
+                return true;
+
+            }
+            else {
+                android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                LoginFragment fragment = new LoginFragment();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack("f6");
+                fragmentTransaction.commit();
+
+                Toast.makeText(MainActivity.this, "Welcome to Login page",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (id == R.id.action_logout) {
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this, "Logout...",
+                        Toast.LENGTH_SHORT).show();
+                android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                LoginFragment fragment = new LoginFragment();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack("f6");
+                fragmentTransaction.commit();
+
+
+                return true;
+
+            }
+            else {
+                Toast.makeText(MainActivity.this, "You are not signin...",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+
+
+
 
         return super.onOptionsItemSelected(item);
     }
