@@ -150,11 +150,17 @@ public class WeddingDetailFragment extends Fragment {
                 mpartner_name=partner_name.getText().toString();
                 mwedding_msg=wedding_msg.getText().toString();
                 mlocation=location.getText().toString();
-                Log.d("mname",myour_name);
+                Log.d("wc detail",myour_name+""+mpartner_name+""+mwedding_msg+""+mlocation);
 
                 SelectDesignFragment fragment = new SelectDesignFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("your name",myour_name);
+                bundle.putString("partner name",mpartner_name);
+                bundle.putString("dt",mdate_time);
+                bundle.putString("msg",mwedding_msg);
+                bundle.putString("location",mlocation);
+
+
                 fragment.setArguments(bundle);
 
                 android.support.v4.app.FragmentManager fragmentManager=getFragmentManager();

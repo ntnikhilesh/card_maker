@@ -24,8 +24,9 @@ import com.example.dell.mdemo.R;
  */
 public class SelectDesignFragment extends Fragment {
 
-    String nyourname;
 
+    String nyour_name, nparter_name,ndate_time,nwedding_msg,nlocation;
+    TextView wc_detail,pyour_name,ppartner_name,pwedding_message,pdate_time,plocation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,9 +72,18 @@ public class SelectDesignFragment extends Fragment {
         Bundle bundle = getArguments();
 //        Log.d("rbundle",bundle.toString());
         if (bundle != null) {
-            nyourname = bundle.getString("your name");
-            Log.d("name",nyourname);
+           // nyourname = bundle.getString("your name");
+            nyour_name= bundle.getString("your name");
+            nparter_name= bundle.getString("partner name");
+            ndate_time= bundle.getString("dt");
+            nwedding_msg= bundle.getString("msg");
+            nlocation= bundle.getString("location");
+
+
+           // Log.d("name",nyourname);
         }
+
+
 
 
 
@@ -87,9 +97,26 @@ public class SelectDesignFragment extends Fragment {
         FrameLayout fl = (FrameLayout) inflater.inflate(R.layout.fragment_select_design, container, false);
         // Recive data from detail fragment
 
+        // receive details from previous activity
 
-        TextView t=(TextView)fl.findViewById(R.id.tv_select_design);
-        t.setText(nyourname);
+        pyour_name=(TextView)fl.findViewById(R.id.tv_w3_your_name);
+        ppartner_name=(TextView)fl.findViewById(R.id.tv_w5_partner_name);
+        pwedding_message=(TextView)fl.findViewById(R.id.tv_w6_wedding_message);
+        pdate_time=(TextView)fl.findViewById(R.id.tv_w7_time);
+        plocation=(TextView)fl.findViewById(R.id.tv_w8_location);
+
+        Log.d("wc detail",nyour_name+""+nparter_name+""+ndate_time+""+nwedding_msg+""+nlocation);
+
+
+        pyour_name.setText(nyour_name);
+        ppartner_name.setText(nparter_name);
+        pwedding_message.setText(nwedding_msg);
+        pdate_time.setText(ndate_time);
+        plocation.setText(nlocation);
+
+
+       // TextView t=(TextView)fl.findViewById(R.id.tv_select_design);
+        //t.setText(nyourname);
 
 
         return fl;
