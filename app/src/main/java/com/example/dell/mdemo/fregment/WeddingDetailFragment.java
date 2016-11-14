@@ -114,7 +114,7 @@ public class WeddingDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        FrameLayout fl = (FrameLayout) inflater.inflate(R.layout.fragment_wedding_detail, container, false);
+               FrameLayout fl = (FrameLayout) inflater.inflate(R.layout.fragment_wedding_detail, container, false);
 
 
         your_name=(EditText)fl.findViewById(R.id.et_your_name);
@@ -149,7 +149,9 @@ public class WeddingDetailFragment extends Fragment {
                 mlocation=location.getText().toString();
                 Log.d("wc detail",myour_name+""+mpartner_name+""+mwedding_msg+""+mlocation);
 
-                SelectDesignFragment fragment = new SelectDesignFragment();
+               // SelectDesignFragment fragment = new SelectDesignFragment();
+
+                SelectBackground fragment = new SelectBackground();
                 Bundle bundle = new Bundle();
                 bundle.putString("your name",myour_name);
                 bundle.putString("partner name",mpartner_name);

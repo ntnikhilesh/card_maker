@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.dell.mdemo.fregment.LoginFragment;
+import com.example.dell.mdemo.fregment.SelectBackground;
 import com.example.dell.mdemo.fregment.SelectDesignFragment;
 import com.example.dell.mdemo.fregment.SignupFragment;
 import com.example.dell.mdemo.fregment.UpdatePasswordFragment;
@@ -26,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener,SignupFragment.OnFragmentInteractionListener,UpdatePasswordFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, LoginFragment.OnFragmentInteractionListener ,WeddingDetailFragment.OnFragmentInteractionListener,SelectDesignFragment.OnFragmentInteractionListener,SignupFragment.OnFragmentInteractionListener,UpdatePasswordFragment.OnFragmentInteractionListener,SelectBackground.OnFragmentInteractionListener{
    // EditText enter_mapatg,address_line1,address_line2,city,state,zip,phone,lat,lon;
     //ImageView maptag_image;
 

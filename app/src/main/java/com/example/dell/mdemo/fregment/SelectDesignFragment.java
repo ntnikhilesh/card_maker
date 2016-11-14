@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dell.mdemo.R;
 
@@ -27,6 +29,8 @@ public class SelectDesignFragment extends Fragment {
 
     String nyour_name, nparter_name,ndate_time,nwedding_msg,nlocation;
     TextView wc_detail,pyour_name,ppartner_name,pwedding_message,pdate_time,plocation;
+    int nimage_no;
+    LinearLayout ll;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +82,9 @@ public class SelectDesignFragment extends Fragment {
             ndate_time= bundle.getString("dt");
             nwedding_msg= bundle.getString("msg");
             nlocation= bundle.getString("location");
+            nimage_no=bundle.getInt("image no");
+
+            Toast.makeText(getActivity(),"image no-"+nimage_no,Toast.LENGTH_LONG).show();
 
 
            // Log.d("name",nyourname);
@@ -98,6 +105,9 @@ public class SelectDesignFragment extends Fragment {
         // Recive data from detail fragment
 
         // receive details from previous activity
+       ll=(LinearLayout)fl.findViewById(R.id.ll_select_design_fragment);
+
+        select_image();
 
         pyour_name=(TextView)fl.findViewById(R.id.tv_w3_your_name);
         ppartner_name=(TextView)fl.findViewById(R.id.tv_w5_partner_name);
@@ -125,6 +135,66 @@ public class SelectDesignFragment extends Fragment {
 
 
 
+    } //end oncreateview
+
+
+    public void select_image()
+    {
+        switch (nimage_no)
+        {
+            case 1:
+
+                ll.setBackgroundResource(R.drawable.wc_img1);
+                break;
+
+            case 2:
+
+                ll.setBackgroundResource(R.drawable.wc_img2);
+                break;
+
+            case 3:
+
+                ll.setBackgroundResource(R.drawable.wc_img3);
+                break;
+            case 4:
+
+                ll.setBackgroundResource(R.drawable.wc_img4);
+                break;
+            case 5:
+
+                ll.setBackgroundResource(R.drawable.wc_img5);
+                break;
+            case 6:
+
+                ll.setBackgroundResource(R.drawable.wc_img6);
+                break;
+            case 7:
+
+                ll.setBackgroundResource(R.drawable.wc_img7);
+                break;
+
+            case 8:
+
+                ll.setBackgroundResource(R.drawable.wc_img8);
+                break;
+
+            case 9:
+
+                ll.setBackgroundResource(R.drawable.wc_img9);
+                break;
+            case 10:
+
+                ll.setBackgroundResource(R.drawable.wc_img10);
+                break;
+            case 11:
+
+                ll.setBackgroundResource(R.drawable.wc_img11);
+                break;
+            case 12:
+
+                ll.setBackgroundResource(R.drawable.wc_img12);
+                break;
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
